@@ -1,0 +1,86 @@
+services:
+
+  youtube-mcp:
+    container_name: recipes-rag-youtube-mcp
+    image: recipe
+    command: python3 mcp_servers/youtube_mcp.py
+    env_file: [.env]
+    volumes:
+      - ../api:/workspace
+    working_dir: /workspace
+    environment:
+      - PYTHONPATH=/workspace
+      - PYTHONUNBUFFERED=1
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8801:8001"
+
+  backend:
+    container_name: recipes-rag-backend
+    image: recipe
+    command: uvicorn server:app --host 0.0.0.0 --port 8010 --reload
+    env_file: [.env]
+    volumes:
+      - ../api:/workspace
+      - /data/models/hf_cache:/root/.cache/huggingface
+    working_dir: /workspace
+    shm_size: 32g
+    environment:
+      - PYTHONPATH=/workspace
+      - PYTHONUNBUFFERED=1
+      - HF_HOME=/root/.cache/huggingface
+      - YOUTUBE_MCP_URL=http://recipes-rag-youtube-mcp:8001/messages
+      - CORPUS_PATH=/data/enriched_corpus.json
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8041:8010"
+    depends_on:
+      - youtube-mcp
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+              device_ids: ["0"]
+
+  ui:
+    container_name: recipes-rag-ui
+    image: recipe
+    command: streamlit run ui.py --server.port 8503 --server.address 0.0.0.0
+    env_file: [.env]
+    volumes:
+      - ../api:/workspace
+    working_dir: /workspace
+    environment:
+      - PYTHONPATH=/workspace
+      - PYTHONUNBUFFERED=1
+      - API_URL=http://recipes-rag-backend:8010
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8541:8503"
+    depends_on:
+      - backend
+
+
+  dashboard:
+    container_name: recipes-rag-dashboard
+    image: recipe
+    command: streamlit run dashboard.py --server.port 8504 --server.address 0.0.0.0
+    env_file: [.env]
+    volumes:
+      - ../api:/workspace
+    working_dir: /workspace
+    environment:
+      - PYTHONPATH=/workspace
+      - PYTHONUNBUFFERED=1
+      - API_URL=http://recipes-rag-backend:8010
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8542:8504"
+    depends_on:
+      - backend

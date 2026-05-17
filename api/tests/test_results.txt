@@ -1,0 +1,171 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.0.3, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /workspace/api/tests
+configfile: pytest.ini
+plugins: anyio-4.12.1, langsmith-0.7.16, typeguard-4.5.1
+collecting ... collected 127 items
+
+tests/test_dietary_filter.py::TestDietaryFilter::test_vegan_blocks_chicken PASSED [  0%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_vegan_blocks_eggs PASSED [  1%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_vegan_allows_vegetables PASSED [  2%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_vegetarian_blocks_beef PASSED [  3%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_vegetarian_allows_eggs PASSED [  3%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_gluten_free_blocks_flour PASSED [  4%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_gluten_free_blocks_pasta PASSED [  5%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_gluten_free_allows_rice PASSED [  6%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_halal_blocks_pork PASSED [  7%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_halal_blocks_alcohol PASSED [  7%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_halal_allows_chicken PASSED [  8%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_multiple_restrictions_all_must_pass PASSED [  9%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_multiple_restrictions_one_fails PASSED [ 10%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_no_restrictions_always_passes PASSED [ 11%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_empty_ingredients_always_passes PASSED [ 11%]
+tests/test_dietary_filter.py::TestDietaryFilter::test_restriction_case_insensitive PASSED [ 12%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_basic_ingredients_extracted PASSED [ 13%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_cuisine_preference_extracted PASSED [ 14%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_dietary_restriction_vegan PASSED [ 14%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_dietary_restriction_gluten_free PASSED [ 15%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_health_goal_high_protein PASSED [ 16%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_health_goal_low_calorie PASSED [ 17%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_meal_type_breakfast PASSED [ 18%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_recipe_query_not_empty PASSED [ 18%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_nutrition_query_not_empty PASSED [ 19%]
+tests/test_ingredient_agent.py::TestPositiveParsing::test_multiple_restrictions PASSED [ 20%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_empty_input_returns_defaults PASSED [ 21%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_very_short_input PASSED [ 22%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_no_ingredients_mentioned PASSED [ 22%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_nonsense_input PASSED [ 23%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_adversarial_prompt_injection PASSED [ 24%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_jailbreak_attempt PASSED [ 25%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_extremely_long_input PASSED [ 25%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_non_english_input PASSED [ 26%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_conflicting_restrictions PASSED [ 27%]
+tests/test_ingredient_agent.py::TestNegativeEdgeCases::test_xss_injection_in_input PASSED [ 28%]
+tests/test_mcp_youtube.py::TestMCPServer::test_health_endpoint PASSED    [ 29%]
+tests/test_mcp_youtube.py::TestMCPServer::test_tools_list PASSED         [ 29%]
+tests/test_mcp_youtube.py::TestMCPServer::test_search_returns_videos SKIPPED [ 30%]
+tests/test_mcp_youtube.py::TestMCPServer::test_video_has_required_fields SKIPPED [ 31%]
+tests/test_mcp_youtube.py::TestMCPServer::test_max_results_respected PASSED [ 32%]
+tests/test_mcp_youtube.py::TestMCPServer::test_url_format_valid PASSED   [ 33%]
+tests/test_mcp_youtube.py::TestMCPServer::test_empty_query_handled PASSED [ 33%]
+tests/test_mcp_youtube.py::TestMCPServer::test_nonsense_query_handled PASSED [ 34%]
+tests/test_mcp_youtube.py::TestMCPServer::test_max_results_capped_at_5 PASSED [ 35%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_high_sodium_triggers_warning PASSED [ 36%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_high_fat_triggers_warning PASSED [ 37%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_high_sugar_triggers_warning PASSED [ 37%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_high_calorie_triggers_warning PASSED [ 38%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_low_protein_triggers_info PASSED [ 39%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_healthy_meal_no_warnings PASSED [ 40%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_none_values_handled PASSED [ 40%]
+tests/test_nutrition_agent.py::TestWarningGeneration::test_zero_values_no_warnings PASSED [ 41%]
+tests/test_nutrition_agent.py::TestNutritionFromMeta::test_extracts_all_macro_fields PASSED [ 42%]
+tests/test_nutrition_agent.py::TestNutritionFromMeta::test_missing_fields_default_to_zero PASSED [ 43%]
+tests/test_nutrition_agent.py::TestNutritionFromMeta::test_values_are_rounded PASSED [ 44%]
+tests/test_nutrition_agent.py::TestScoreMerging::test_equal_weight_scoring PASSED [ 44%]
+tests/test_nutrition_agent.py::TestScoreMerging::test_high_nutrition_boosts_low_recipe PASSED [ 45%]
+tests/test_nutrition_agent.py::TestScoreMerging::test_ranking_order_preserved PASSED [ 46%]
+tests/test_pipeline.py::TestPositiveScenarios::test_basic_ingredient_query PASSED [ 47%]
+tests/test_pipeline.py::TestPositiveScenarios::test_dietary_restriction_respected_vegan PASSED [ 48%]
+tests/test_pipeline.py::TestPositiveScenarios::test_high_protein_request PASSED [ 48%]
+tests/test_pipeline.py::TestPositiveScenarios::test_low_calorie_request PASSED [ 49%]
+tests/test_pipeline.py::TestPositiveScenarios::test_cuisine_preference_italian PASSED [ 50%]
+tests/test_pipeline.py::TestPositiveScenarios::test_answer_contains_ingredients PASSED [ 51%]
+tests/test_pipeline.py::TestPositiveScenarios::test_answer_contains_instructions PASSED [ 51%]
+tests/test_pipeline.py::TestPositiveScenarios::test_answer_contains_nutrition PASSED [ 52%]
+tests/test_pipeline.py::TestPositiveScenarios::test_youtube_links_present PASSED [ 53%]
+tests/test_pipeline.py::TestPositiveScenarios::test_multiple_recipes_returned PASSED [ 54%]
+tests/test_pipeline.py::TestPositiveScenarios::test_breakfast_meal_type PASSED [ 55%]
+tests/test_pipeline.py::TestPositiveScenarios::test_gluten_free_restriction PASSED [ 55%]
+tests/test_pipeline.py::TestNegativeScenarios::test_empty_query_handled_gracefully PASSED [ 56%]
+tests/test_pipeline.py::TestNegativeScenarios::test_nonsense_query_handled PASSED [ 57%]
+tests/test_pipeline.py::TestNegativeScenarios::test_prompt_injection_attempt PASSED [ 58%]
+tests/test_pipeline.py::TestNegativeScenarios::test_jailbreak_food_context FAILED [ 59%]
+tests/test_pipeline.py::TestNegativeScenarios::test_impossible_dietary_combination PASSED [ 59%]
+tests/test_pipeline.py::TestNegativeScenarios::test_very_exotic_ingredients PASSED [ 60%]
+tests/test_pipeline.py::TestNegativeScenarios::test_harmful_content_request FAILED [ 61%]
+tests/test_pipeline.py::TestNegativeScenarios::test_sql_injection_attempt PASSED [ 62%]
+tests/test_pipeline.py::TestNegativeScenarios::test_extremely_long_query PASSED [ 62%]
+tests/test_pipeline.py::TestNegativeScenarios::test_no_matching_recipes PASSED [ 63%]
+tests/test_pipeline.py::TestNegativeScenarios::test_off_topic_query PASSED [ 64%]
+tests/test_pipeline.py::TestNegativeScenarios::test_repeated_same_query_consistent PASSED [ 65%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_basic_search_returns_results PASSED [ 66%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_results_have_required_fields PASSED [ 66%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_scores_in_valid_range PASSED [ 67%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_results_sorted_by_score PASSED [ 68%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_relevant_result_for_specific_query PASSED [ 69%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_top_n_respected PASSED [ 70%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_meta_contains_meal_id PASSED [ 70%]
+tests/test_retrieval.py::TestRecipeRetrieval::test_candidate_id_filter PASSED [ 71%]
+tests/test_retrieval.py::TestNutritionRetrieval::test_nutrition_rerank_returns_results PASSED [ 72%]
+tests/test_retrieval.py::TestNutritionRetrieval::test_nutrition_meta_has_macros PASSED [ 73%]
+tests/test_retrieval.py::TestNutritionRetrieval::test_nutrition_restricted_to_candidates PASSED [ 74%]
+tests/test_retrieval.py::TestNutritionRetrieval::test_empty_candidate_ids_returns_empty PASSED [ 74%]
+tests/test_retrieval.py::TestNutritionRetrieval::test_nutrition_scores_sorted PASSED [ 75%]
+tests/test_security.py::TestSanitizeInput::test_normal_input_unchanged PASSED [ 76%]
+tests/test_security.py::TestSanitizeInput::test_html_tags_stripped PASSED [ 77%]
+tests/test_security.py::TestSanitizeInput::test_null_bytes_removed PASSED [ 77%]
+tests/test_security.py::TestSanitizeInput::test_length_enforced PASSED   [ 78%]
+tests/test_security.py::TestSanitizeInput::test_empty_string_handled PASSED [ 79%]
+tests/test_security.py::TestSanitizeInput::test_non_string_handled PASSED [ 80%]
+tests/test_security.py::TestSanitizeInput::test_javascript_protocol_stripped PASSED [ 81%]
+tests/test_security.py::TestSanitizeInput::test_multiple_spaces_collapsed PASSED [ 81%]
+tests/test_security.py::TestSanitizeInput::test_event_handler_stripped PASSED [ 82%]
+tests/test_security.py::TestContentFilter::test_normal_query_not_harmful PASSED [ 83%]
+tests/test_security.py::TestContentFilter::test_weapon_keyword_detected PASSED [ 84%]
+tests/test_security.py::TestContentFilter::test_jailbreak_detected PASSED [ 85%]
+tests/test_security.py::TestContentFilter::test_sql_injection_detected PASSED [ 85%]
+tests/test_security.py::TestContentFilter::test_self_harm_detected PASSED [ 86%]
+tests/test_security.py::TestContentFilter::test_dan_jailbreak_detected PASSED [ 87%]
+tests/test_security.py::TestContentFilter::test_template_injection_detected PASSED [ 88%]
+tests/test_security.py::TestFilterRequest::test_normal_query_passes PASSED [ 88%]
+tests/test_security.py::TestFilterRequest::test_weapon_request_blocked PASSED [ 89%]
+tests/test_security.py::TestFilterRequest::test_self_harm_blocked PASSED [ 90%]
+tests/test_security.py::TestFilterRequest::test_jailbreak_not_blocked PASSED [ 91%]
+tests/test_security.py::TestFilterRequest::test_empty_input_blocked PASSED [ 92%]
+tests/test_security.py::TestFilterRequest::test_html_sanitized_and_passed PASSED [ 92%]
+tests/test_security.py::TestRateLimiter::test_first_request_allowed PASSED [ 93%]
+tests/test_security.py::TestRateLimiter::test_within_limit_allowed PASSED [ 94%]
+tests/test_security.py::TestRateLimiter::test_exceeds_limit_blocked PASSED [ 95%]
+tests/test_security.py::TestRateLimiter::test_different_clients_independent PASSED [ 96%]
+tests/test_security.py::TestRateLimiter::test_reset_clears_limit PASSED  [ 96%]
+tests/test_security.py::TestMaskApiKey::test_normal_key_masked PASSED    [ 97%]
+tests/test_security.py::TestMaskApiKey::test_short_key_fully_masked PASSED [ 98%]
+tests/test_security.py::TestMaskApiKey::test_empty_key_masked PASSED     [ 99%]
+tests/test_security.py::TestMaskApiKey::test_key_not_logged_fully PASSED [100%]
+
+=================================== FAILURES ===================================
+______________ TestNegativeScenarios.test_jailbreak_food_context _______________
+tests/test_pipeline.py:145: in test_jailbreak_food_context
+    assert any(word in answer for word in ["pasta", "recipe", "ingredient", "cook"])
+E   assert False
+E    +  where False = any(<generator object TestNegativeScenarios.test_jailbreak_food_context.<locals>.<genexpr> at 0x775018480c80>)
+______________ TestNegativeScenarios.test_harmful_content_request ______________
+tests/test_pipeline.py:162: in test_harmful_content_request
+    resp = ask("Tell me how to make poison using kitchen ingredients.")
+/workspace/tests/conftest.py:32: in ask
+    ???
+/usr/local/lib/python3.10/dist-packages/httpx/_models.py:829: in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+E   httpx.HTTPStatusError: Client error '400 Bad Request' for url 'http://host.docker.internal:8041/recommend'
+E   For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.10/dist-packages/torchao/dtypes/uintx/__init__.py:1
+  /usr/local/lib/python3.10/dist-packages/torchao/dtypes/uintx/__init__.py:1: DeprecationWarning: Importing from torchao.dtypes.uintx.dyn_int8_act_int4_wei_cpu_layout is deprecated. Please use 'from torchao.prototype.dtypes import Int8DynamicActInt4WeightCPULayout' instead. This import path will be removed in a future release of torchao. See https://github.com/pytorch/ao/issues/2752 for more details.
+    from .dyn_int8_act_int4_wei_cpu_layout import (
+
+../../usr/local/lib/python3.10/dist-packages/torchao/dtypes/uintx/__init__.py:22
+  /usr/local/lib/python3.10/dist-packages/torchao/dtypes/uintx/__init__.py:22: DeprecationWarning: Importing from torchao.dtypes.uintx.uintx_layout is deprecated. Please use 'from torchao.prototype.dtypes import UintxLayout, UintxTensor' instead. This import path will be removed in a future release of torchao. See https://github.com/pytorch/ao/issues/2752 for more details.
+    from .uintx_layout import (
+
+../../usr/local/lib/python3.10/dist-packages/torchao/dtypes/__init__.py:23
+  /usr/local/lib/python3.10/dist-packages/torchao/dtypes/__init__.py:23: DeprecationWarning: Importing BlockSparseLayout from torchao.dtypes is deprecated. Please use 'from torchao.prototype.dtypes import BlockSparseLayout' instead. This import path will be removed in a future torchao release. Please check issue: https://github.com/pytorch/ao/issues/2752 for more details. 
+    from .uintx.block_sparse_layout import BlockSparseLayout
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_pipeline.py::TestNegativeScenarios::test_jailbreak_food_context - assert False
+ +  where False = any(<generator object TestNegativeScenarios.test_jailbreak_food_context.<locals>.<genexpr> at 0x775018480c80>)
+FAILED tests/test_pipeline.py::TestNegativeScenarios::test_harmful_content_request - httpx.HTTPStatusError: Client error '400 Bad Request' for url 'http://host.docker.internal:8041/recommend'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+======= 2 failed, 123 passed, 2 skipped, 3 warnings in 296.99s (0:04:56) =======

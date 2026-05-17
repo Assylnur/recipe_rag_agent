@@ -1,0 +1,39 @@
+# ── Web framework ──────────────────────────────────────────────────────────────
+fastapi
+uvicorn[standard]
+python-multipart          # Form() support in FastAPI
+
+# ── Agent orchestration ────────────────────────────────────────────────────────
+langgraph
+langchain
+langchain-core
+langchain-openai          # ChatOpenAI → vLLM compatible
+
+# ── Vector store ───────────────────────────────────────────────────────────────
+pymilvus
+
+# ── Embeddings ─────────────────────────────────────────────────────────────────
+sentence-transformers
+torch                     # required by sentence-transformers
+
+# ── UI ────────────────────────────────────────────────────────────────────────
+streamlit
+
+# ── HTTP client ────────────────────────────────────────────────────────────────
+requests
+httpx                     # used by youtube_mcp.py and test suite
+
+# ── Data preparation ───────────────────────────────────────────────────────────
+# (only needed when running data_preparation/ scripts)
+# requests already listed above
+
+# ── Testing ────────────────────────────────────────────────────────────────────
+pytest
+pytest-html               # HTML test report
+pytest-asyncio
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv             # .env loading
+pydantic                  # structured LLM outputs
+numpy                     # embedding array ops
+pandas                    # dashboard bar chart
