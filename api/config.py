@@ -22,7 +22,7 @@ CORPUS_PATH = os.getenv("CORPUS_PATH", "data/raw/enriched_corpus.json")
 
 # ── LLM ───────────────────────────────────────────────────────────────────────
 VLLM_URL = os.getenv("VLLM_URL", "http://host.docker.internal:8080/v1")
-MODEL_NAME = os.getenv("MODEL_NAME", "gpt-oss-120b")
+MODEL_NAME = os.getenv("MODEL_NAME", "gpt-oss-20b")
 
 NODE_CONFIGS = {
     "ingredient_agent": {"temperature": 0},      # structured extraction — deterministic
