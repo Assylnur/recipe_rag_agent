@@ -40,7 +40,7 @@ A conversational AI agent that understands intent, not just keywords:
 
 ## Test Results
 
-**96/96 tests passing** across 7 test suites:
+**159/159 tests passing** across 7 test suites:
 
 | Suite | Tests | Coverage |
 |---|---|---|
@@ -52,6 +52,8 @@ A conversational AI agent that understands intent, not just keywords:
 | Cache | 17 | LRU eviction, TTL expiry, quota persistence |
 | MCP YouTube | 9 | JSON-RPC protocol, video fields, quota enforcement |
 | Pipeline E2E | 24 | 12 positive + 12 negative/adversarial scenarios |
+| Cache & Quota | 17 | LRU eviction, TTL, quota persistence |
+| RAG Quality | 15 | Confidence, hallucination, source attribution |
 
 ## Non-Functional Compliance
 
